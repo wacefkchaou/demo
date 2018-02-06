@@ -30,7 +30,7 @@ public class Client implements Serializable {
         super();
     }
 
-    public Client(String nomClient, String adresse, String email, String tel, Collection<Commande> commandes) {
+    public Client(String nomClient, String adresse, String email, String tel) {
         super();
         this.nomClient = nomClient;
         this.adresse = adresse;
