@@ -4,23 +4,22 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Role implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRole;
 
     private String roleName;
 
-    private Boolean actived;
-
-    public Role(String roleName, Boolean actived) {
+    public Role(String roleName) {
         super();
         this.roleName = roleName;
-        this.actived = actived;
+
     }
 
     public Role() {
@@ -41,14 +40,6 @@ public class Role implements Serializable {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
-    }
-
-    public Boolean getActived() {
-        return actived;
-    }
-
-    public void setActived(Boolean actived) {
-        this.actived = actived;
     }
 
 }

@@ -5,27 +5,41 @@ import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUser;
 
     private String userName;
 
     private String passwrd;
 
+    public Boolean getActived() {
+        return actived;
+    }
+
+    public void setActived(Boolean actived) {
+        this.actived = actived;
+    }
+
+    private Boolean actived;
+
     @OneToMany
+    @JoinColumn(name = "user-id")
     private Collection<Role> roles;
 
-    public User(String userName, String passwrd) {
+    public User(String userName, String passwrd, Boolean actived) {
         super();
         this.userName = userName;
         this.passwrd = passwrd;
+        this.actived = actived;
     }
 
     public User() {
